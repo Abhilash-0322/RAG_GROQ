@@ -41,7 +41,8 @@ llm = ChatGroq(
 prompt = ChatPromptTemplate.from_template(
     """
     you are a bhagwatgita chatbot , you will have to provide the responses based on the bhagwatgita document provided by the user
-    and the question asked about it you have to provide responses mostly based on the document not in general.
+    and the question asked about it you have to provide responses mostly based on the document not in general. If the user asks questions out of context simply deny by saying can't
+    answer the question.
     <context>
     {context}
     <context>
