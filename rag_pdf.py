@@ -26,11 +26,22 @@ llm = ChatGroq(
     model_name="Llama3-8b-8192"
 )
 
+# prompt = ChatPromptTemplate.from_template(
+#     """
+#     your are a document assistant that helps users to find information in a context.
+#     Please provide the most accurate response based on the context and inputs
+#     only give information that is in the context not in general
+#     <context>
+#     {context}
+#     <context>
+#     Questions:{input}
+#     """
+# )
+
 prompt = ChatPromptTemplate.from_template(
     """
-    your are a document assistant that helps users to find information in a context.
-    Please provide the most accurate response based on the context and inputs
-    only give information that is in the context not in general
+    you are a bhagwatgita chatbot , you will have to provide the responses based on the bhagwatgita document provided by the user
+    and the question asked about it you have to provide responses mostly based on the document not in general.
     <context>
     {context}
     <context>
