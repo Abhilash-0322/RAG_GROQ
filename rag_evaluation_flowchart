@@ -1,0 +1,25 @@
+digraph RAG_Evaluation_Flowchart {
+	graph [rankdir=TB]
+	Start [label=Start fillcolor=lightgreen shape=ellipse style=filled]
+	UploadCSV [label="Upload CSV File" fillcolor=lightblue shape=parallelogram style=filled]
+	ProcessCSV [label="Process CSV
+(Embed Questions & Translations)" fillcolor=lightyellow shape=box style=filled]
+	CreateVectors [label="Create Vector Embeddings" fillcolor=lightyellow shape=box style=filled]
+	EmbedDone [label="Embeddings Ready?" fillcolor=lightcoral shape=diamond style=filled]
+	EvaluateRAG [label="Evaluate RAG
+(Compare Retrieved & Expected Translations)" fillcolor=lightyellow shape=box style=filled]
+	CalculateAccuracy [label="Calculate Accuracy
+& Show Results" fillcolor=lightyellow shape=box style=filled]
+	DisplayResults [label="Display Results
+& Details" fillcolor=lightyellow shape=box style=filled]
+	End [label=End fillcolor=lightgreen shape=ellipse style=filled]
+	Start -> UploadCSV
+	UploadCSV -> ProcessCSV
+	ProcessCSV -> CreateVectors
+	CreateVectors -> EmbedDone
+	EmbedDone -> EvaluateRAG [label=Yes]
+	EmbedDone -> UploadCSV [label=No]
+	EvaluateRAG -> CalculateAccuracy
+	CalculateAccuracy -> DisplayResults
+	DisplayResults -> End
+}
