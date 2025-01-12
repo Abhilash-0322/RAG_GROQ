@@ -19,7 +19,7 @@ os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 
 
-st.title("RAG Doc Assistant Using Llama3")
+st.title("Shloka Verse")
 
 llm = ChatGroq(
     groq_api_key=groq_api_key,

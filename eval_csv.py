@@ -28,9 +28,9 @@ prompt = ChatPromptTemplate.from_template(
     """
     You are a CSV assistant. Your task is to retrieve the correct translation for a given question based on the context.
     Respond in JSON format with the following structure:
-    { 
+    {{
         "translation": "<retrieved_translation>"
-    }
+    }}
     If you cannot find the translation, respond with "I cannot find the translation."
     <context>
     {context}
@@ -41,12 +41,13 @@ prompt = ChatPromptTemplate.from_template(
 
 st.title("RAG Evaluation App for CSV Data")
 
-# Specify the CSV file path here
-csv_file_path = "bhagwatgita_queeng.csv"
+# File uploader for CSV
+uploaded_file = st.file_uploader("Upload a CSV File", type=["csv"])
 
 # Global variables
 data = None
 vectors = None
+
 
 def process_csv(csv_file):
     """
@@ -76,12 +77,12 @@ def process_csv(csv_file):
 
     return df, vectors
 
+
 def evaluate_rag(df, vectors):
     """
     Evaluates the RAG performance by comparing retrieved translations with the expected translations.
     """
     correct_answers = 0
-    sn = 0
     total_questions = len(df)
 
     # Create chains
@@ -93,10 +94,6 @@ def evaluate_rag(df, vectors):
 
     # Loop through questions
     for idx, row in df.iterrows():
-        if sn > 50:  # Limit to 50 questions
-            break
-        sn += 1
-
         question = row['question']
         expected_translation = row['translation']
 
@@ -130,16 +127,14 @@ def evaluate_rag(df, vectors):
     accuracy = (correct_answers / total_questions) * 100
     return accuracy, results
 
-# Step 1: Process the CSV and embed (only once)
-if st.button("Process CSV"):
-    if os.path.exists(csv_file_path):
-        data, vectors = process_csv(csv_file_path)
-        if vectors:
-            st.success("CSV processed and embeddings created successfully.")
-    else:
-        st.error("CSV file not found at the specified path.")
 
-# Step 2: Evaluate RAG (only if CSV is processed)
+# Step 1: Process the CSV and embed
+if st.button("Process CSV") and uploaded_file:
+    data, vectors = process_csv(uploaded_file)
+    if vectors:
+        st.success("CSV processed and embeddings created successfully.")
+
+# Step 2: Evaluate RAG
 if st.button("Evaluate RAG") and data is not None and vectors is not None:
     accuracy, results = evaluate_rag(data, vectors)
     st.write(f"**Accuracy**: {accuracy:.2f}%")
@@ -154,5 +149,7 @@ if st.button("Evaluate RAG") and data is not None and vectors is not None:
         st.write(f"**Retrieved Translation**: {result['retrieved_translation']}")
         st.write(f"**Correct**: {result['is_correct']}")
         st.write("---")
+elif uploaded_file is None:
+    st.warning("Please upload a CSV file before evaluating.")
 elif data is None or vectors is None:
     st.warning("Please process the CSV before evaluating.")
