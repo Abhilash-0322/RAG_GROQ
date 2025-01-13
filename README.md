@@ -8,7 +8,8 @@ RAG combines retrieval from external knowledge sources with generative models, a
 <br/>
 # Flowchart
 <br/>
-<img href='https://github.com/user-attachments/assets/3d8e28be-3cca-4d01-bec0-4199cfbf77b4'>
+![Screenshot 2025-01-12 235516](https://github.com/user-attachments/assets/474fafa1-dcb0-41d5-ace7-49e6cbea5986)
+
 <br/>
 
 #  🛠️ Features
