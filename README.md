@@ -6,7 +6,7 @@ RAG combines retrieval from external knowledge sources with generative models, a
 <br/>
 ---
 <br/>
-
+# Flowchart
 ![image](https://github.com/user-attachments/assets/74e8fb13-efc4-4b8b-9931-aa09d608de40)
 <br/>
 
@@ -22,6 +22,7 @@ RAG combines retrieval from external knowledge sources with generative models, a
 - **Knowledge Retrieval:** Uses vector stores for retrieving contextually relevant documents.
 
 <br/>
+# Accuracy
 ![image](https://github.com/user-attachments/assets/3d8e28be-3cca-4d01-bec0-4199cfbf77b4)
 
 
