@@ -6,7 +6,7 @@ RAG combines retrieval from external knowledge sources with generative models, a
 <br/>
 ---
 <br/>
-#  🛠️ Featuresc
+#  🛠️ Features
 <br/>
 ![Screenshot 2025-01-12 235516](https://github.com/user-attachments/assets/474fafa1-dcb0-41d5-ace7-49e6cbea5986)
 
@@ -25,6 +25,7 @@ RAG combines retrieval from external knowledge sources with generative models, a
 <br/>
 # Accuracy
 <br/>
-![image](https://github.com/user-attachments/assets/3d8e28be-3cca-4d01-bec0-4199cfbf77b4)
+![image](https://github.com/user-attachments/assets/55b5d909-edfd-4406-9214-2739cff96727)
+
 
 
